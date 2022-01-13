@@ -1,2 +1,2 @@
-pip3 uninstall pycli
-$SHELL
+pip3 uninstall gitcfg
+# $SHELL

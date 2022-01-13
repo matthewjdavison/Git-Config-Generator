@@ -1,10 +1,10 @@
 from setuptools import setup
 setup(
-    name = 'git-config',
+    name = 'gitcfg',
     version = '0.1.0',
-    packages = ['git-config'],
+    packages = ['gitcfg'],
     entry_points = {
         'console_scripts': [
-            'git-config = git-config.__main__:main'
+            'gitcfg = gitcfg.__main__:main'
         ]
     })
