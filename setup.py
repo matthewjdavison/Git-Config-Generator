@@ -1,10 +1,10 @@
 from setuptools import setup
 setup(
-    name = 'pycli',
+    name = 'git-config',
     version = '0.1.0',
-    packages = ['pycli'],
+    packages = ['git-config'],
     entry_points = {
         'console_scripts': [
-            'pycli = pycli.__main__:main'
+            'git-config = git-config.__main__:main'
         ]
     })
