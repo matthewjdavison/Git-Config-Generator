@@ -1,5 +1,7 @@
 import sys
 import subprocess
+import os
+from dotenv import dotenv_values
 from .classmodule import MyClass
 from .funcmodule import my_function
 
@@ -18,12 +20,18 @@ def main():
     username = ""
     email = ""
     
+    config = dotenv_values("I:\matthewjdavison\Git-Config-Generator\.env")
+    for key, value in config.items():
+        print(key + " : " + value)
+
+    # print(config.get("PERSONAL_USERNAME"))
+    # return
     if(git_host == "personal"):
-        username = "testPersonal"
-        email = "testPersonalEmail"
+        username = config.get("PERSONAL_USERNAME")
+        email = config.get("PERSONAL_EMAIL")
     elif(git_host == "online"):
-        username = "testOnline"
-        email = "testOnlineEmail"
+        username = config.get("ONLINE_USERNAME")
+        email = config.get("ONLINE_EMAIL")
     else:
         print("That host is unknown.")
         return
@@ -36,7 +44,7 @@ def main():
 
     print(subprocess.run(["git", "config", "user.name", username], capture_output=True, shell=True))
     print(subprocess.run(["git", "config", "user.email", email], capture_output=True, shell=True))
-    
+
     print(subprocess.run(["touch", "README.md"], capture_output=True, shell=True))
     print(subprocess.run(["git", "add", "."], capture_output=True, shell=True))
     print(subprocess.run(["git", "commit",  "-m", "first commit"], capture_output=True, shell=True))
